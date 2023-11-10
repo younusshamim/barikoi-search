@@ -1,8 +1,15 @@
 import React from "react";
-import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from "@chakra-ui/react";
 import { BiSearch } from "react-icons/bi";
+import { RiCloseFill } from "react-icons/ri";
 
-const SearchInput = () => {
+const SearchInput = ({ inputText, setInputText }) => {
   return (
     <InputGroup
       size="lg"
@@ -18,10 +25,25 @@ const SearchInput = () => {
         placeholder="Search Location."
         border="none"
         focusBorderColor="transparent"
-        focusShadow="none"
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
       />
 
-      <InputRightElement width="5rem" h="full">
+      <InputRightElement
+        width={inputText.length > 0 ? "8rem" : "4.8rem"}
+        h="full"
+        gap="6"
+      >
+        {inputText.length > 0 && (
+          <Box
+            fontSize="28px"
+            cursor="pointer"
+            onClick={() => setInputText("")}
+          >
+            <RiCloseFill />
+          </Box>
+        )}
+
         <Button
           h="2rem"
           px="18px"

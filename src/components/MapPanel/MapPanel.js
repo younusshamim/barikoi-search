@@ -3,7 +3,7 @@ import React from "react";
 
 const MapPanel = () => {
   return (
-    <Stack w="60%" bg="green">
+    <Stack w="60%" h="100vh">
       <Text>Map Panel</Text>
     </Stack>
   );
