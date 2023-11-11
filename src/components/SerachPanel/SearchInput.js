@@ -8,8 +8,12 @@ import {
 } from "@chakra-ui/react";
 import { BiSearch } from "react-icons/bi";
 import { RiCloseFill } from "react-icons/ri";
+import { useData } from "../../contexts/DataProvider";
 
-const SearchInput = ({ inputText, setInputText }) => {
+const SearchInput = () => {
+  const { inputText, setInputText, handleInputClear, handleInputChange } =
+    useData();
+
   return (
     <InputGroup
       size="lg"
@@ -26,7 +30,7 @@ const SearchInput = ({ inputText, setInputText }) => {
         border="none"
         focusBorderColor="transparent"
         value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        onChange={handleInputChange}
       />
 
       <InputRightElement
@@ -35,11 +39,7 @@ const SearchInput = ({ inputText, setInputText }) => {
         gap="6"
       >
         {inputText.length > 0 && (
-          <Box
-            fontSize="28px"
-            cursor="pointer"
-            onClick={() => setInputText("")}
-          >
+          <Box fontSize="28px" cursor="pointer" onClick={handleInputClear}>
             <RiCloseFill />
           </Box>
         )}
