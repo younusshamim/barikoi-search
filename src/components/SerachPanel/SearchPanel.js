@@ -7,12 +7,20 @@ import SearchInput from "./SearchInput";
 import SuggestedPlaces from "./SuggestedPlaces";
 import { useData } from "../../contexts/DataProvider";
 import SelectedPlace from "./SelectedPlace";
+import { useSettings } from "../../contexts/SettingsProvider";
 
 const SearchPanel = () => {
   const { inputText, selectedPlace } = useData();
+  const { searchbarOpen } = useSettings();
 
   return (
-    <Stack w="40%" p="15px">
+    <Stack
+      w={searchbarOpen ? "40%" : "0%"}
+      visibility={searchbarOpen ? "visible" : "hidden"}
+      opacity={searchbarOpen ? 1 : 0}
+      p={searchbarOpen ? "15px" : "0px"}
+      transition="0.5s"
+    >
       <HStack justify="space-between" mb="5">
         <Logo />
         <HStack>

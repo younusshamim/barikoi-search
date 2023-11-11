@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Stack, Text } from "@chakra-ui/react";
+import React from "react";
+import { Stack } from "@chakra-ui/react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useData } from "../../contexts/DataProvider";
 import { greenLocation, redLocation, blueLocation } from "../../data/icons";
+import SearchBarToggler from "../Common/SearchBarToggler";
+import { useSettings } from "../../contexts/SettingsProvider";
 
 const MapPanel = () => {
   // contexts
   const { placeList, handlePlaceSelect, position, zoom } = useData();
+  const { searchbarOpen } = useSettings();
   // states
 
   const getIcon = (place) => {
@@ -23,7 +26,16 @@ const MapPanel = () => {
   };
 
   return (
-    <Stack w="60%" h="100vh" overflow="scroll">
+    <Stack w={searchbarOpen ? "60%" : "100%"} h="100vh" position="relative">
+      {!searchbarOpen && (
+        <SearchBarToggler
+          position="absolute"
+          top="80px"
+          left="0"
+          zIndex="9999"
+        />
+      )}
+
       <MapContainer
         center={position}
         zoom={zoom}
