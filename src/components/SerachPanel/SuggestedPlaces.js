@@ -3,8 +3,10 @@ import { Box, HStack, Heading, Stack, Text } from "@chakra-ui/react";
 import { MdLocationPin } from "react-icons/md";
 import HighlightedText from "../Common/HighlightedText";
 import { useData } from "../../contexts/DataProvider";
+import useColors from "../../hooks/useColors";
 
 const SuggestedPlaces = () => {
+  const { alpha50, alpha100, alpha200, bg } = useColors();
   // contexts
   const { placeList, isLoading, error, inputText, handlePlaceSelect } =
     useData();
@@ -28,7 +30,7 @@ const SuggestedPlaces = () => {
 
   return (
     <Stack
-      bg="white"
+      bg={bg}
       borderRadius="sm"
       boxShadow="lg"
       zIndex="999"
@@ -51,12 +53,12 @@ const SuggestedPlaces = () => {
                 key={index}
                 gap="5"
                 borderBottomWidth="1px"
-                borderBottomColor="blackAlpha.100"
+                borderBottomColor={alpha100}
                 pt={index == 0 ? "20px" : "15px"}
                 pb="15px"
                 cursor="pointer"
                 _hover={{
-                  bg: "blackAlpha.100",
+                  bg: { alpha100 },
                 }}
                 onClick={() => handlePlaceSelect(item)}
               >

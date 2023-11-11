@@ -9,10 +9,11 @@ import {
 import { BiSearch } from "react-icons/bi";
 import { RiCloseFill } from "react-icons/ri";
 import { useData } from "../../contexts/DataProvider";
+import useColors from "../../hooks/useColors";
 
 const SearchInput = () => {
-  const { inputText, setInputText, handleInputClear, handleInputChange } =
-    useData();
+  const { inputText, handleInputClear, handleInputChange } = useData();
+  const { alpha50 } = useColors();
 
   return (
     <InputGroup
@@ -22,7 +23,7 @@ const SearchInput = () => {
       py="3px"
       zIndex="9"
       borderWidth="1px"
-      borderColor="blackAlpha.50"
+      borderColor={alpha50}
     >
       <Input
         pr="5rem"

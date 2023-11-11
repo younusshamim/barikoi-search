@@ -2,9 +2,11 @@ import React from "react";
 import { useData } from "../../contexts/DataProvider";
 import { Box, Flex, HStack, Heading, Stack, Text } from "@chakra-ui/react";
 import { FaLocationDot } from "react-icons/fa6";
+import useColors from "../../hooks/useColors";
 
 const SelectedPlace = () => {
   const { selectedPlace } = useData();
+  const { alpha100 } = useColors();
 
   return (
     <Stack
@@ -41,7 +43,7 @@ const SelectedPlace = () => {
         </HStack>
 
         <Box
-          bg="blackAlpha.100"
+          bg={alpha100}
           p="2px 5px"
           borderRadius="sm"
           w="fit-content"
