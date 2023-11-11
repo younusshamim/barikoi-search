@@ -5,7 +5,7 @@ import HighlightedText from "../Common/HighlightedText";
 import { useData } from "../../contexts/DataProvider";
 import useColors from "../../hooks/useColors";
 
-const SuggestedPlaces = () => {
+const SuggestedPlaces = ({ h = "430px", ...rest }) => {
   const { alpha50, alpha100, alpha200, bg } = useColors();
   // contexts
   const { placeList, isLoading, error, inputText, handlePlaceSelect } =
@@ -26,8 +26,6 @@ const SuggestedPlaces = () => {
     return targetTextArr;
   };
 
-  // handler
-
   return (
     <Stack
       bg={bg}
@@ -36,8 +34,9 @@ const SuggestedPlaces = () => {
       zIndex="999"
       mt="-8px"
       px="4"
+      {...rest}
     >
-      <Stack maxH="430px" minH="430px" overflowY="auto" gap="0">
+      <Stack h={h} minH="430px" overflowY="auto" gap="0">
         {!isLoading &&
           !error &&
           placeList?.length > 0 &&

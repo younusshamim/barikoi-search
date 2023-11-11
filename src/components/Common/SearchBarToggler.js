@@ -11,8 +11,8 @@ const SearchBarToggler = ({ ...rest }) => {
       fontWeight="bold"
       fontSize="45px"
       cursor="pointer"
-      {...rest}
       onClick={() => setSearchbarOpen(!searchbarOpen)}
+      {...rest}
     >
       {searchbarOpen ? <RiArrowDropLeftLine /> : <RiArrowDropRightLine />}
     </Box>

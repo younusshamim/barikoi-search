@@ -11,7 +11,7 @@ import { RiCloseFill } from "react-icons/ri";
 import { useData } from "../../contexts/DataProvider";
 import useColors from "../../hooks/useColors";
 
-const SearchInput = () => {
+const SearchInput = ({ ...rest }) => {
   const { inputText, handleInputClear, handleInputChange } = useData();
   const { alpha50 } = useColors();
 
@@ -24,6 +24,7 @@ const SearchInput = () => {
       zIndex="9"
       borderWidth="1px"
       borderColor={alpha50}
+      {...rest}
     >
       <Input
         pr="5rem"

@@ -4,7 +4,7 @@ import { Box, Flex, HStack, Heading, Stack, Text } from "@chakra-ui/react";
 import { FaLocationDot } from "react-icons/fa6";
 import useColors from "../../hooks/useColors";
 
-const SelectedPlace = () => {
+const SelectedPlace = ({ ...rest }) => {
   const { selectedPlace } = useData();
   const { alpha100 } = useColors();
 
@@ -18,6 +18,7 @@ const SelectedPlace = () => {
       gap="2"
       mt="5"
       cursor="pointer"
+      {...rest}
     >
       <HStack>
         <Box color="gray.600" borderRadius="50%" fontSize="20px">
