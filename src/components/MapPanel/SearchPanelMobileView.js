@@ -17,8 +17,8 @@ const SearchPanelMobileView = () => {
       {inputText.length > 0 && !selectedPlace && (
         <SuggestedPlaces
           display={{ base: "block", md: "none" }}
-          mt="80px"
-          h="95vh"
+          mt="10px"
+          h="full"
         />
       )}
       {selectedPlace && (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useData } from "../../contexts/DataProvider";
-import { Box, Flex, HStack, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack, Text } from "@chakra-ui/react";
 import { FaLocationDot } from "react-icons/fa6";
 import useColors from "../../hooks/useColors";
 
@@ -11,7 +11,7 @@ const SelectedPlace = ({ ...rest }) => {
   return (
     <Stack
       boxShadow="xl"
-      minH="200px"
+      h="200px"
       w="full"
       borderRadius="xl"
       p="5"
