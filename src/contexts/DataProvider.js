@@ -10,6 +10,7 @@ const DataProvider = ({ children }) => {
   const [placeList, setPlaceList] = useState([]);
   const [position, setPosition] = useState([23.8041, 90.4152]);
   const [zoom, setZoom] = useState(13);
+  const [mapLoading, setMapLoading] = useState(false);
 
   // payload
   const APIKEY = process.env.REACT_APP_BARIKOI_API_KEY;
@@ -56,13 +57,18 @@ const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (selectedPlace?.latitude) {
+    if (selectedPlace) {
       const latitude = parseFloat(selectedPlace.latitude);
       const longitude = parseFloat(selectedPlace.longitude);
+      setMapLoading(true);
       setPosition([latitude, longitude]);
       setZoom(14);
     }
   }, [selectedPlace]);
+
+  useEffect(() => {
+    setMapLoading(false);
+  }, [position]);
 
   const value = {
     placeList,
@@ -78,6 +84,7 @@ const DataProvider = ({ children }) => {
     handleInputChange,
     position,
     zoom,
+    mapLoading,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

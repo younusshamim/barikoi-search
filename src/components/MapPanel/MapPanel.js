@@ -10,7 +10,8 @@ import SearchPanelMobileView from "./SearchPanelMobileView";
 
 const MapPanel = () => {
   // contexts
-  const { placeList, handlePlaceSelect, position, zoom } = useData();
+  const { placeList, handlePlaceSelect, position, zoom, mapLoading } =
+    useData();
   const { searchbarOpen } = useSettings();
   // states
 
@@ -35,24 +36,26 @@ const MapPanel = () => {
     >
       <SearchPanelMobileView />
 
-      <MapContainer
-        center={position}
-        zoom={zoom}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      {!mapLoading && (
+        <MapContainer
+          center={position}
+          zoom={zoom}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {placeList?.map((place) => (
-          <Marker
-            key={place.id}
-            position={[place.latitude, place.longitude]}
-            icon={getIcon(place)}
-            eventHandlers={{ click: () => handlePlaceSelect(place) }}
-          >
-            <Popup>{place.address}</Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+          {placeList?.map((place) => (
+            <Marker
+              key={place.id}
+              position={[place.latitude, place.longitude]}
+              icon={getIcon(place)}
+              eventHandlers={{ click: () => handlePlaceSelect(place) }}
+            >
+              <Popup>{place.address}</Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      )}
     </Stack>
   );
 };
